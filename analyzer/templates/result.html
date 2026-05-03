@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Resume Result</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+.navbar{
+    width:100%;
+    padding:16px 50px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    background:rgba(15,23,42,0.75);
+    backdrop-filter:blur(14px);
+
+    border-bottom:1px solid rgba(255,255,255,0.06);
+
+    position:sticky;
+    top:0;
+    z-index:100;
+
+    box-shadow:0 8px 30px rgba(0,0,0,0.25);
+}
+
+/* LOGO */
+.logo{
+    font-size:22px;
+    font-weight:800;
+    letter-spacing:0.5px;
+
+    background:linear-gradient(90deg,#3b82f6,#6366f1);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+}
+
+/* NAV LINKS */
+.nav-links a{
+    position:relative;
+    margin-left:28px;
+    text-decoration:none;
+    color:#cbd5f5;
+    font-weight:500;
+    font-size:15px;
+
+    transition:all 0.3s ease;
+}
+
+/* HOVER EFFECT */
+.nav-links a:hover{
+    color:#ffffff;
+}
+
+.login-btn{
+    margin-left:20px;
+    padding:8px 18px;
+    border-radius:20px;
+
+    background:linear-gradient(90deg,#2563eb,#3b82f6);
+    color:white !important;
+
+    font-size:14px;
+    font-weight:600;
+
+    text-decoration:none;
+    transition:0.3s;
+}
+
+/* BACKGROUND */
+body{
+    background: radial-gradient(circle at top,#1e1b4b,#020617);
+    color:white;
+}
+
+/* UNDERLINE ANIMATION */
+.nav-links a::after{
+    content:"";
+    position:absolute;
+    width:0%;
+    height:2px;
+    left:0;
+    bottom:-5px;
+
+    background:linear-gradient(90deg,#3b82f6,#6366f1);
+    transition:0.3s;
+}
+
+.nav-links a:hover::after{
+    width:100%;
+}
+
+/* ACTIVE LINK */
+.nav-links a.active{
+    color:#ffffff;
+}
+
+.nav-links a.active::after{
+    width:100%;
+}
+.nav-links a:hover{
+    color:#ffffff;
+    text-shadow:0 0 8px rgba(59,130,246,0.6);
+}
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+/* BACKGROUND */
+body{
+    background: radial-gradient(circle at top,#1e1b4b,#020617);
+    color:white;
+}
+
+/* CONTAINER */
+.container{
+    width:90%;
+    max-width:1100px;
+    margin:auto;
+    padding-bottom:40px;
+}
+
+/* GLASS CARD */
+.glass{
+    background:rgba(255,255,255,0.05);
+    backdrop-filter:blur(12px);
+    border:1px solid rgba(255,255,255,0.06);
+    border-radius:18px;
+    padding:25px;
+    margin-top:25px;
+    transition:0.3s;
+}
+
+.glass:hover{
+    transform:translateY(-5px);
+}
+
+/* GRID */
+.grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+    gap:20px;
+    margin-top:30px;
+}
+
+/* SCORE */
+.score{
+    font-size:36px;
+    color:#22c55e;
+    font-weight:bold;
+}
+
+/* BAR */
+.bar{
+    height:8px;
+    background:#1f2937;
+    border-radius:10px;
+    margin-top:10px;
+    overflow:hidden;
+}
+
+.fill{
+    height:8px;
+    background:linear-gradient(90deg,#22c55e,#4ade80);
+}
+
+/* BADGE */
+.badge{
+    display:inline-block;
+    padding:6px 12px;
+    margin:5px;
+    border-radius:20px;
+    background:linear-gradient(90deg,#6366f1,#3b82f6);
+    font-size:12px;
+}
+
+/* TEXTAREA */
+textarea{
+    width:100%;
+    padding:14px;
+    border:none;
+    border-radius:12px;
+    background:#020617;
+    color:white;
+}
+
+/* ANIMATION */
+.animated{
+    animation:fadeUp 0.8s ease;
+}
+
+@keyframes fadeUp{
+    from{
+        opacity:0;
+        transform:translateY(30px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+</style>
+
+</head>
+
+<body>
+<div class="navbar">
+    <div class="logo">AI Resume Analyzer</div>
+    <div class="nav-links">
+        <a href="/">Home</a>
+        <a href="/upload/">Analyze</a>
+         <!-- LOGIN BUTTON -->
+        <a href="/login/"">Login</a>
+    </div>
+</div>
+
+<div class="container">
+
+<!-- RESUME TEXT -->
+<div class="glass animated" style="animation-delay:1.4s">
+<h3>Resume Text</h3>
+<textarea rows="8" readonly>{{ text }}</textarea>
+</div>
+
+<!-- SCORE CARDS -->
+<div class="grid">
+
+<div class="glass animated" style="animation-delay:0.1s">
+<h3>ATS Score</h3>
+<div class="score">{{ score }}%</div>
+<div class="bar"><div class="fill" style="width:{{ score }}%"></div></div>
+</div>
+
+<div class="glass animated" style="animation-delay:0.2s">
+<h3>Job Match</h3>
+<div class="score">{{ match_score }}%</div>
+<div class="bar"><div class="fill" style="width:{{ match_score }}%"></div></div>
+</div>
+
+</div>
+
+<!-- SKILLS -->
+<div class="glass animated" style="animation-delay:0.4s">
+<h3>Skills</h3>
+{% for skill in skills %}
+<span class="badge">{{ skill }}</span>
+{% endfor %}
+</div>
+
+<!-- INSIGHTS -->
+<div class="glass animated" style="animation-delay:1.2s">
+<h3>Insights</h3>
+<p><b>Strength:</b> {{ insights.strength }}</p>
+<p><b>Risk:</b> {{ insights.risk }}</p>
+<p><b>Improvement:</b> {{ insights.improvement }}</p>
+</div>
+
+<!-- AI REPORT -->
+<div class="glass animated" style="animation-delay:0.6s">
+<h3>Detailed Analysis</h3>
+<div>{{ ai_report|safe }}</div>
+</div>
+
+
+<!-- SUMMARY -->
+<div class="glass animated" style="animation-delay:0.6s">
+<h3>AI Summary</h3>
+<p>{{ summary }}</p>
+</div>
+
+<!-- JOBS -->
+<div class="glass animated" style="animation-delay:0.8s">
+<h3>Recommended Jobs</h3>
+<ul>
+{% for job in jobs %}
+<li>{{ job }}</li>
+{% endfor %}
+</ul>
+</div>
+
+<!-- RELEVANCE -->
+<div class="glass animated" style="animation-delay:1s">
+<h3>Skill Relevance</h3>
+<ul>
+{% for skill, level in relevance.items %}
+<li>{{ skill }} - {{ level }}</li>
+{% endfor %}
+</ul>
+</div>
+
+</div>
+
+</body>
+</html>

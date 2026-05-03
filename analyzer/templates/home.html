@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>AI Resume Analyzer</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+.navbar{
+    width:100%;
+    padding:16px 50px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    background:rgba(15,23,42,0.75);
+    backdrop-filter:blur(14px);
+
+    border-bottom:1px solid rgba(255,255,255,0.06);
+
+    position:sticky;
+    top:0;
+    z-index:100;
+
+    box-shadow:0 8px 30px rgba(0,0,0,0.25);
+}
+
+
+/* LOGO */
+.logo{
+    font-size:22px;
+    font-weight:800;
+    letter-spacing:0.5px;
+
+    background:linear-gradient(90deg,#3b82f6,#6366f1);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+}
+
+/* NAV LINKS */
+.nav-links a{
+    position:relative;
+    margin-left:28px;
+    text-decoration:none;
+    color:#cbd5f5;
+    font-weight:500;
+    font-size:15px;
+
+    transition:all 0.3s ease;
+}
+
+/* HOVER EFFECT */
+.nav-links a:hover{
+    color:#ffffff;
+}
+
+/* UNDERLINE ANIMATION */
+.nav-links a::after{
+    content:"";
+    position:absolute;
+    width:0%;
+    height:2px;
+    left:0;
+    bottom:-5px;
+
+    background:linear-gradient(90deg,#3b82f6,#6366f1);
+    transition:0.3s;
+}
+
+.nav-links a:hover::after{
+    width:100%;
+}
+
+/* ACTIVE LINK */
+.nav-links a.active{
+    color:#ffffff;
+}
+
+.nav-links a.active::after{
+    width:100%;
+}
+.nav-links a:hover{
+    color:#ffffff;
+    text-shadow:0 0 8px rgba(59,130,246,0.6);
+}
+
+.login-btn{
+    margin-left:20px;
+    padding:8px 18px;
+    border-radius:20px;
+
+    background:linear-gradient(90deg,#2563eb,#3b82f6);
+    color:white !important;
+
+    font-size:14px;
+    font-weight:600;
+
+    text-decoration:none;
+    transition:0.3s;
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+/* BACKGROUND */
+body{
+    background: radial-gradient(circle at top,#1e1b4b,#020617);
+    color:white;
+}
+
+/* HERO */
+.hero{
+    text-align:center;
+    padding:100px 20px 60px;
+}
+
+.hero h1{
+    font-size:64px;
+    font-weight:700;
+    background:linear-gradient(90deg,#60a5fa,#a78bfa);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+}
+
+.hero p{
+    margin-top:10px;
+    font-size:18px;
+    color:#94a3b8;
+}
+
+/* BUTTON */
+.btn{
+    display:inline-block;
+    margin-top:25px;
+    padding:14px 28px;
+    border-radius:12px;
+    background:linear-gradient(90deg,#6366f1,#3b82f6);
+    color:white;
+    text-decoration:none;
+    font-weight:600;
+    transition:0.3s;
+}
+
+.btn:hover{
+    transform:scale(1.05);
+}
+
+/* SECTION */
+.section{
+    width:90%;
+    max-width:1100px;
+    margin:50px auto;
+}
+
+/* CARDS */
+.grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+    gap:20px;
+}
+
+.card{
+    background:rgba(255,255,255,0.05);
+    backdrop-filter:blur(10px);
+    border-radius:18px;
+    padding:25px;
+    text-align:center;
+    border:1px solid rgba(255,255,255,0.05);
+    transition:0.3s;
+}
+
+.card:hover{
+    transform:translateY(-6px);
+}
+
+/* ICON */
+.icon{
+    font-size:30px;
+    margin-bottom:10px;
+}
+
+/* FOOTER */
+.footer{
+    text-align:center;
+    margin:60px 0 20px;
+    color:#64748b;
+}
+</style>
+</head>
+
+<body>
+
+<div class="navbar">
+    <div class="logo">AI Resume Analyzer</div>
+    <div class="nav-links">
+        <a href="/">Home</a>
+        <a href="/upload/">Analyze</a>
+         <!-- LOGIN BUTTON -->
+        <a href="/login/"">Login</a>
+    </div>
+</div>
+
+<!-- HERO -->
+<div class="hero">
+    <h1>AI Resume Analyzer</h1>
+    <p>Get instant AI-powered feedback, ATS score, and job insights</p>
+
+    <a href="/upload/" class="btn">Analyze Resume</a>
+</div>
+
+<!-- FEATURES -->
+<div class="section">
+
+<div class="grid">
+
+<div class="card">
+    <div class="icon">📊</div>
+    <h3>ATS Score</h3>
+    <p>Check how well your resume performs with ATS systems</p>
+</div>
+
+<div class="card">
+    <div class="icon">🧠</div>
+    <h3>AI Analysis</h3>
+    <p>Get strengths, weaknesses, and improvement suggestions</p>
+</div>
+
+<div class="card">
+    <div class="icon">🎯</div>
+    <h3>Job Matching</h3>
+    <p>Compare your resume with job descriptions</p>
+</div>
+
+<div class="card">
+    <div class="icon">💼</div>
+    <h3>Recommendations</h3>
+    <p>Get job roles based on your skills</p>
+</div>
+
+</div>
+
+</div>
+
+<!-- SECOND SECTION -->
+<div class="section">
+
+<div class="grid">
+
+<div class="card">
+    <h3>Skill Extraction</h3>
+    <p>Automatically detect skills from your resume</p>
+</div>
+
+<div class="card">
+    <h3>AI Summary</h3>
+    <p>Smart summary of your profile and potential</p>
+</div>
+
+<div class="card">
+    <h3>Insights</h3>
+    <p>Understand strengths, risks, and improvements</p>
+</div>
+
+</div>
+
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+    AI Resume Analyzer
+</div>
+
+</body>
+</html>

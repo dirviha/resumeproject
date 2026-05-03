@@ -1,0 +1,7 @@
+django
+gunicorn
+pillow
+PyPDF2
+python-docx
+openai
+whitenoise
